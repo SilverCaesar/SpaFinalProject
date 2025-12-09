@@ -1,0 +1,76 @@
+﻿@page "/customers/create"
+@using Microsoft.EntityFrameworkCore
+@using SpaFinalProject.Components.Models
+@inject IDbContextFactory<SpaFinalProject.Data.SpaFinalProjectContext> DbFactory
+@inject NavigationManager NavigationManager
+
+<PageTitle>Create</PageTitle>
+
+<h1>Create</h1>
+
+<h2>Customer</h2>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <EditForm method="post" Model="Customer" OnValidSubmit="AddCustomer" FormName="create" Enhance>
+            <DataAnnotationsValidator />
+            <ValidationSummary class="text-danger" role="alert"/>
+            <div class="mb-3">
+                <label for="fname" class="form-label">Fname:</label> 
+                <InputText id="fname" @bind-Value="Customer.Fname" class="form-control" /> 
+                <ValidationMessage For="() => Customer.Fname" class="text-danger" /> 
+            </div>        
+            <div class="mb-3">
+                <label for="lname" class="form-label">Lname:</label> 
+                <InputText id="lname" @bind-Value="Customer.Lname" class="form-control" /> 
+                <ValidationMessage For="() => Customer.Lname" class="text-danger" /> 
+            </div>        
+            <div class="mb-3">
+                <label for="notes" class="form-label">Notes:</label> 
+                <InputText id="notes" @bind-Value="Customer.Notes" class="form-control" /> 
+                <ValidationMessage For="() => Customer.Notes" class="text-danger" /> 
+            </div>        
+            <div class="mb-3">
+                <label for="user_id" class="form-label">User_Id:</label> 
+                <InputNumber id="user_id" @bind-Value="Customer.User_Id" class="form-control" /> 
+                <ValidationMessage For="() => Customer.User_Id" class="text-danger" /> 
+            </div>        
+            <div class="mb-3">
+                <label for="email" class="form-label">email:</label> 
+                <InputText id="email" @bind-Value="Customer.email" class="form-control" /> 
+                <ValidationMessage For="() => Customer.email" class="text-danger" /> 
+            </div>        
+            <div class="mb-3">
+                <label for="password" class="form-label">password:</label> 
+                <InputText id="password" @bind-Value="Customer.password" class="form-control" /> 
+                <ValidationMessage For="() => Customer.password" class="text-danger" /> 
+            </div>        
+            <div class="mb-3">
+                <label for="phone" class="form-label">phone:</label> 
+                <InputText id="phone" @bind-Value="Customer.phone" class="form-control" /> 
+                <ValidationMessage For="() => Customer.phone" class="text-danger" /> 
+            </div>        
+            <button type="submit" class="btn btn-primary">Create</button>
+        </EditForm>
+    </div>
+</div>
+
+<div>
+    <a href="/customers">Back to List</a>
+</div>
+
+@code {
+    [SupplyParameterFromForm]
+    private Customer Customer { get; set; } = default!;
+
+    protected override void OnInitialized() => Customer ??= new();
+
+    // To protect from overposting attacks, see https://learn.microsoft.com/aspnet/core/blazor/forms/#mitigate-overposting-attacks.
+    private async Task AddCustomer()
+    {
+        using var context = DbFactory.CreateDbContext();
+        context.Customer.Add(Customer);
+        await context.SaveChangesAsync();
+        NavigationManager.NavigateTo("/customers");
+    }
+}
