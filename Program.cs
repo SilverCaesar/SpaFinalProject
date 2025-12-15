@@ -6,7 +6,6 @@ using SpaFinalProject.Data;
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContextFactory<SpaFinalProjectContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("SpaFinalProjectContext") ?? throw new InvalidOperationException("Connection string 'SpaFinalProjectContext' not found.")));
-
 builder.Services.AddQuickGridEntityFrameworkAdapter();
 
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
