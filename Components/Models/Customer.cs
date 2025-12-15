@@ -11,5 +11,11 @@ namespace SpaFinalProject.Components.Models
         public string ?Notes { get; set; }
 
         public DateTime DateAccount { get; }
+
+        public Customer()
+        {
+            DateAccount = DateTime.Now();
+        }
     }
+
 }
