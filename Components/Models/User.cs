@@ -7,9 +7,9 @@ namespace SpaFinalProject.Components.Models
     {
         public int User_Id { get; set; }
 
-        public required string email { get; set; }
-        public required string password { get; set; }
+        public string Email { get; set; }
+        public string Password { get; set; }
 
-        public string ?phone { get; set; }
+        public string ?Phone { get; set; }
     }
 }

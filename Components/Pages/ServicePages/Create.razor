@@ -46,12 +46,11 @@
 
 @code {
     [SupplyParameterFromForm]
-    private Service Service { get; set; } = new Service(string.Empty, string.Empty, 0m, 0);
-
-    protected override void OnInitialized()
+    private Service Service { get; set; } = new Service(name: string.Empty, description: string.Empty, price: 0m, duration: 0)
     {
-        // No need to re-initialize Service here, as it's already initialized above.
-    }
+        Name = string.Empty,
+        Description = string.Empty
+    };
 
     // To protect from overposting attacks, see https://learn.microsoft.com/aspnet/core/blazor/forms/#mitigate-overposting-attacks.
     private async Task AddService()
