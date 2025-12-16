@@ -10,11 +10,10 @@ namespace SpaFinalProject.Components.Models
         public required string Lname { get; set; }
         public string ?Notes { get; set; }
 
-        public DateTime DateAccount { get; }
+        public TimeSpan DateAccount { get; }
 
         public Customer()
         {
-            DateAccount = DateTime.Now();
         }
     }
 
