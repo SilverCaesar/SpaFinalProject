@@ -5,16 +5,15 @@ namespace SpaFinalProject.Components.Models
 {
     public class Customer : User
     {
-        [Key]public required string Customer_Id { get; set; }
-        public required string Fname { get; set; }
-        public required string Lname { get; set; }
+        [Key]public string Customer_Id { get; set; }
+        public string Fname { get; set; }
+        public string Lname { get; set; }
         public string ?Notes { get; set; }
 
-        public DateTime DateAccount { get; }
+        public TimeSpan DateAccount { get; }
 
         public Customer()
         {
-            DateAccount = DateTime.Now();
         }
     }
 
