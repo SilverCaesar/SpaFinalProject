@@ -13,13 +13,6 @@ namespace SpaFinalProject.Components.Models
 
         public TimeSpan DateAccount { get; set; } = TimeSpan.Zero;
 
-        // Optional FK / mapping to a User entity
-        public string User_Id { get; set; } = string.Empty;
-
-        // Common properties used by views. Keep PascalCase versions plus lowercase aliases
-        // so existing Razor markup that references `customer.email` / `customer.password` / `customer.phone`
-        // continues to compile without changing view code.
-        [NotMapped]
         public string email
         {
             get => Email;
@@ -46,11 +39,10 @@ namespace SpaFinalProject.Components.Models
             Lname = lname ?? string.Empty;
             Notes = notes;
             DateAccount = dateAccount;
-            User_Id = userId ?? string.Empty;
             Email = email ?? string.Empty;
             this.password = password ?? string.Empty;
             this.phone = phone ?? string.Empty;
         }
     }
 }
-}
+
