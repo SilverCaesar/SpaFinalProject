@@ -34,22 +34,21 @@
             </ul>
 
             <!-- Login Page -->
-            <ul class="navbar-nav ms-auto d-flex align-items-center flex-row">
-                <li class="nav-item">
-                    <a class="me-2" href="register"
-                       style="text-decoration: none; color:black; background-color: lightgrey; border: solid thin black; border-radius: 6px; padding: 5px 30px;">
+            <div class="ms-auto d-flex align-items-center gap-2">
+
+                <NavLink href="register"
+                         class="btn"
+                         style="background-color: lightgrey; border: 1px solid black; color: black; padding: 5px 30px;">
                         Register
-                    </a>
-                </li>
+                </NavLink>
 
-                <li class="nav-item">
-                    <a href="login"
-                       style="text-decoration: none; color:black; background-color: lightgrey; border: solid thin black; border-radius: 6px; padding: 5px 30px;">
+                <NavLink href="login"
+                         class="btn"
+                         style="background-color: lightgrey; border: 1px solid black; color: black; padding: 5px 30px;">
                         Log In
-                    </a>
+                </NavLink>
 
-                </li>
-            </ul>
+            </div>
         </div>
     </div>
 </nav>
