@@ -19,9 +19,6 @@ namespace SpaFinalProject.Components.Models
             set => Email = value;
         }
 
-        [Required]
-        public string Email { get; set; } = string.Empty;
-
         [NotMapped]
         public string password { get; set; } = string.Empty;
 
