@@ -12,7 +12,7 @@ using SpaFinalProject.Data;
 namespace SpaFinalProject.Migrations
 {
     [DbContext(typeof(SpaFinalProjectContext))]
-    [Migration("20251216230627_InitialCreate")]
+    [Migration("20251216232738_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -102,6 +102,10 @@ namespace SpaFinalProject.Migrations
 
                     b.Property<int>("User_Id")
                         .HasColumnType("int");
+
+                    b.Property<string>("email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("EmployeeId");
 

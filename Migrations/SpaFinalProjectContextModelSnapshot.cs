@@ -100,6 +100,10 @@ namespace SpaFinalProject.Migrations
                     b.Property<int>("User_Id")
                         .HasColumnType("int");
 
+                    b.Property<string>("email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("EmployeeId");
 
                     b.HasIndex("SpecializationService_Id");
