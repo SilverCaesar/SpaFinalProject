@@ -6,12 +6,14 @@ namespace SpaFinalProject.Components.Models
     public class Service
     {
         
-        [Key] public int Service_Id { get; set; }
+        [Key]public int Service_Id { get; set; }
 
         public required string Name { get; set; }
 
         public required string Description { get; set; }
 
+        [DataType(DataType.Currency)]
+        [Column(TypeName = "decimal(18,2)")]
         public decimal Price { get; set; }
 
         public int Duration { get; set; }

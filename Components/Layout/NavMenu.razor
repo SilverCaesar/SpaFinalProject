@@ -17,13 +17,19 @@
                     <a class="nav-link" href="">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="services">Services</a>
+                    <a class="nav-link" href="/services">Services</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Pricing</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link disabled" href="#">Disabled</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="make-appointment">DebugAppointment</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="employee-dashboard">DebugDashboard</a>
                 </li>
             </ul>
 
@@ -41,8 +47,26 @@
                        style="text-decoration: none; color:black; background-color: lightgrey; border: solid thin black; border-radius: 6px; padding: 5px 30px;">
                         Log In
                     </a>
+
                 </li>
             </ul>
         </div>
     </div>
 </nav>
+
+@code {
+    private string loginStatus = "Log In";
+
+    private void updateLoginStatus()
+    {
+        // Placeholder logic for login status
+        if(loginStatus == "Log In")
+        {
+            loginStatus = "Log Out";
+        }
+        else
+        {
+            loginStatus = "Log In";
+        }
+    }
+}
