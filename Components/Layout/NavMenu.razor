@@ -1,58 +1,33 @@
-﻿<!--<div class="top-row navbar navbar-dark">
-    <div class="container-fluid">
-        
-    </div>
-</div>-->
-<nav class="navbar navbar-expand navbar-dark sticky-top" style="background-color:darkslategrey;">
-    <div class="container-fluid">
+﻿<nav class="navbar navbar-expand navbar-dark sticky-top"
+     style="background-color: darkslategrey;">
+    <div class="container-fluid d-flex align-items-center">
 
-        <a class="navbar-brand" href="/" style="font-family:'Old English Text MT';font-size: 32pt;">
+        <!-- Brand -->
+        <a class="navbar-brand"
+           href="/"
+           style="font-family:'Old English Text MT'; font-size: 32pt;">
             SpaFinalProject
         </a>
 
-        <!-- Nav links -->
-        <div class="collapse navbar-collapse">
-            <ul class="navbar-nav me-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="services">Services</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Pricing</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled" href="#">Disabled</a>
-                </li>
-                <li class="nav-item">
-                    <NavLink class="nav-link" href="/make-appointment">DebugAppointment</NavLink>
-                </li>
-                <li class="nav-item">
-                    <NavLink class="nav-link" href="/employee-dashboard">DebugDashboard</NavLink>
-                </li>
-            </ul>
-
-            <!-- Login Page -->
-            <ul class="navbar-nav ms-auto d-flex align-items-center flex-row">
-                <li class="nav-item">
-                    <a class="me-2" href="/customers/create"
-                       style="text-decoration: none; color:black; background-color: lightgrey; border: solid thin black; border-radius: 6px; padding: 5px 30px;">
-                        Register
-                    </a>
-                </li>
-
-                <li class="nav-item">
-                    <a href="login"
-                       style="text-decoration: none; color:black; background-color: lightgrey; border: solid thin black; border-radius: 6px; padding: 5px 30px;">
-                        Log In
-                    </a>
-
-                </li>
-            </ul>
+        <!-- Left Links -->
+        <div class="d-flex ms-4 align-items-center flex-grow-1">
+            <NavLink class="nav-link text-light me-3" href="/">Home</NavLink>
+            <NavLink class="nav-link text-light me-3" href="/services">Services</NavLink>
+            <NavLink class="nav-link text-light me-3" href="#">Pricing</NavLink>
+            <NavLink class="nav-link text-light me-3 disabled" href="#">Disabled</NavLink>
+            <NavLink class="nav-link text-light me-3" href="/make-appointment">DebugAppointment</NavLink>
+            <NavLink class="nav-link text-light" href="/employee-dashboard">DebugDashboard</NavLink>
         </div>
+
+        <!-- Right Auth Buttons -->
+        <div class="d-flex align-items-center gap-2">
+            <a class="btn btn-sm btn-light border" href="/customers/create">Register</a>
+            <a class="btn btn-sm btn-light border" href="/login">Log In</a>
+        </div>
+
     </div>
 </nav>
+
 
 @code {
     private string loginStatus = "Log In";
