@@ -6,7 +6,7 @@ namespace SpaFinalProject.Components.Models
     public class Service
     {
 
-        [Key] public int Service_Id { get; set; }
+        public int Service_Id { get; set; }
 
         public string Name { get; set; }
 
@@ -17,14 +17,6 @@ namespace SpaFinalProject.Components.Models
         public decimal Price { get; set; }
 
         public int Duration { get; set; }
-    
 
-    public Service(string name, string description, decimal price, int duration)
-        {
-            Name = name;
-            Description = description;
-            Price = price;
-            Duration = duration;
-        }
     }
 }
