@@ -25,27 +25,30 @@ namespace SpaFinalProject.Data
             if (!context.Service.Any())
             {
                 context.Service.AddRange(
-                    new Service(
-                        "Deep Tissue Massage",
-                        "Focused, therapeutic work targeting chronic tension and muscle knots. Ideal for athletes or those with persistent aches.",
-                        55m,
-                        60
-                    ),
-                    new Service(
-                        "Scalp & Head Massage",
-                        "A focused treatment to relieve tension, boost circulation, and leave you feeling clear-headed and refreshed.",
-                        35m,
-                        45
-                    ),
-                    new Service(
-                        "Anti-Aging Facial",
-                        "Targets fine lines, dullness, and loss of elasticity with firming, brightening ingredients and advanced techniques.",
-                        40m,
-                        35
-                    )
-                );
+            new Service
+            {
+                Name = "Deep Tissue Massage",
+                Description = "Focused, therapeutic work targeting chronic tension and muscle knots. Ideal for athletes or those with persistent aches.",
+                Price = 55,
+                Duration = 60
+            },
 
-                context.SaveChanges();
+            new Service
+            {
+                Name = "Scalp & Head Massage",
+                Description = "A focused treatment to relieve tension, boost circulation, and leave you feeling clear-headed and refreshed.",
+                Price = 35,
+                Duration = 45
+            },
+
+            new Service
+            {
+                Name = "Anti-Aging Facial",
+                Description = "Targets fine lines, dullness, and loss of elasticity with firming, brightening ingredients and advanced techniques.",
+                Price = 40,
+                Duration = 35
+            }
+                );
             }
         }
     }

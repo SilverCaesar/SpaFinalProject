@@ -18,5 +18,25 @@ namespace SpaFinalProject.Data
         public DbSet<SpaFinalProject.Components.Models.Service> Service { get; set; } = default!;
         public DbSet<SpaFinalProject.Components.Models.Employee> Employee { get; set; } = default!;
         public DbSet<SpaFinalProject.Components.Models.Appointment> Appointment { get; set; } = default!;
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<Appointment>()
+                .HasOne(a => a.Customer)
+                .WithMany()
+                .HasForeignKey(a => a.Customer_Id)
+                .OnDelete(DeleteBehavior.Cascade);
+            modelBuilder.Entity<Appointment>()
+                .HasOne(a => a.Employee)
+                .WithMany()
+                .HasForeignKey(a => a.Employee_Id)
+                .OnDelete(DeleteBehavior.Cascade);
+            modelBuilder.Entity<Appointment>()
+                .HasOne(a => a.Service)
+                .WithMany()
+                .HasForeignKey(a => a.Service_Id)
+                .OnDelete(DeleteBehavior.Cascade);
+        }
     }
 }

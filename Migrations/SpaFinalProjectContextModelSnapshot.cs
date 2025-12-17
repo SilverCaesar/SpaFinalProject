@@ -32,7 +32,7 @@ namespace SpaFinalProject.Migrations
 
                     b.Property<string>("Customer_Id")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
@@ -60,6 +60,12 @@ namespace SpaFinalProject.Migrations
 
                     b.HasKey("Appointment_Id");
 
+                    b.HasIndex("Customer_Id");
+
+                    b.HasIndex("Employee_Id");
+
+                    b.HasIndex("Service_Id");
+
                     b.ToTable("Appointment");
                 });
 
@@ -68,8 +74,8 @@ namespace SpaFinalProject.Migrations
                     b.Property<string>("Customer_Id")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<TimeSpan>("DateAccount")
-                        .HasColumnType("time");
+                    b.Property<DateTime>("DateAccount")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -95,10 +101,6 @@ namespace SpaFinalProject.Migrations
 
                     b.Property<int>("User_Id")
                         .HasColumnType("int");
-
-                    b.Property<string>("email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Customer_Id");
 
@@ -141,10 +143,6 @@ namespace SpaFinalProject.Migrations
                     b.Property<int>("User_Id")
                         .HasColumnType("int");
 
-                    b.Property<string>("email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.HasKey("EmployeeId");
 
                     b.HasIndex("SpecializationService_Id");
@@ -177,6 +175,33 @@ namespace SpaFinalProject.Migrations
                     b.HasKey("Service_Id");
 
                     b.ToTable("Service");
+                });
+
+            modelBuilder.Entity("SpaFinalProject.Components.Models.Appointment", b =>
+                {
+                    b.HasOne("SpaFinalProject.Components.Models.Customer", "Customer")
+                        .WithMany()
+                        .HasForeignKey("Customer_Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("SpaFinalProject.Components.Models.Employee", "Employee")
+                        .WithMany()
+                        .HasForeignKey("Employee_Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("SpaFinalProject.Components.Models.Service", "Service")
+                        .WithMany()
+                        .HasForeignKey("Service_Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Customer");
+
+                    b.Navigation("Employee");
+
+                    b.Navigation("Service");
                 });
 
             modelBuilder.Entity("SpaFinalProject.Components.Models.Employee", b =>

@@ -17,14 +17,5 @@ namespace SpaFinalProject.Components.Models
         public decimal Price { get; set; }
 
         public int Duration { get; set; }
-    
-
-    public Service(string name, string description, decimal price, int duration)
-        {
-            Name = name;
-            Description = description;
-            Price = price;
-            Duration = duration;
-        }
     }
 }

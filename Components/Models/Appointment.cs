@@ -9,19 +9,22 @@ namespace SpaFinalProject.Components.Models
         [Key]
         public int Appointment_Id { get; set; }
 
-        [Required]
+    
         public string Customer_Id { get; set; } = string.Empty;
 
-        [Required]
+        public Customer ?Customer { get; set; }
+
         public int Employee_Id { get; set; }
+        public Employee ?Employee { get; set; }
 
-        [Required]
+
         public int Service_Id { get; set; }
+        public Service ?Service { get; set; }
 
-        [DataType(DataType.Date)]
+        [DataType(DataType.DateTime)]
         public DateTime Date { get; set; }
 
-        [DataType(DataType.Time)]
+        [DataType(DataType.DateTime)]
         public DateTime Start { get; set; }
 
         public string? Status { get; set; }
@@ -33,31 +36,5 @@ namespace SpaFinalProject.Components.Models
         public decimal Price { get; set; }
 
         public int Duration { get; set; }
-
-        public Appointment()
-        {
-        }
-
-        public Appointment(
-            string customerId,
-            int employeeId,
-            int serviceId,
-            DateTime date,
-            DateTime start,
-            decimal price = 0m,
-            int duration = 0,
-            string? status = null,
-            string? notes = null)
-        {
-            Customer_Id = customerId ?? string.Empty;
-            Employee_Id = employeeId;
-            Service_Id = serviceId;
-            Date = date;
-            Start = start;
-            Price = price;
-            Duration = duration;
-            Status = status;
-            Notes = notes;
-        }
     }
 }
