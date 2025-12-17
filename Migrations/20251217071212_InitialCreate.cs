@@ -15,7 +15,8 @@ namespace SpaFinalProject.Migrations
                 name: "Customer",
                 columns: table => new
                 {
-                    Customer_Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Customer_Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Fname = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Lname = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Notes = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -77,7 +78,7 @@ namespace SpaFinalProject.Migrations
                 {
                     Appointment_Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Customer_Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Customer_Id = table.Column<int>(type: "int", nullable: false),
                     Employee_Id = table.Column<int>(type: "int", nullable: false),
                     Service_Id = table.Column<int>(type: "int", nullable: false),
                     Date = table.Column<DateTime>(type: "datetime2", nullable: false),

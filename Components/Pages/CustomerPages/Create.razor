@@ -1,4 +1,5 @@
 ﻿@page "/customers/create"
+@using System
 @using Microsoft.EntityFrameworkCore
 @using SpaFinalProject.Components.Models
 @inject IDbContextFactory<SpaFinalProject.Data.SpaFinalProjectContext> DbFactory
@@ -68,12 +69,21 @@
     [SupplyParameterFromForm]
     private Customer Customer { get; set; } = default!;
 
-    protected override void OnInitialized() => Customer ??= new();
+    protected override void OnInitialized()
+    {
+        Customer ??= new();
+        // Set DateAccount to current local datetime when the form is initialized
+        Customer.DateAccount = DateTime.Now;
+    }
 
     // To protect from overposting attacks, see https://learn.microsoft.com/aspnet/core/blazor/forms/#mitigate-overposting-attacks.
     private async Task AddCustomer()
     {
         using var context = DbFactory.CreateDbContext();
+
+        // Ensure DateAccount is current datetime at creation time
+        Customer.DateAccount = DateTime.Now;
+
         context.Customer.Add(Customer);
         await context.SaveChangesAsync();
         NavigationManager.NavigateTo("/customers");

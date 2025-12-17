@@ -12,8 +12,8 @@ using SpaFinalProject.Data;
 namespace SpaFinalProject.Migrations
 {
     [DbContext(typeof(SpaFinalProjectContext))]
-    [Migration("20251217060330_UpdateEmployee1")]
-    partial class UpdateEmployee1
+    [Migration("20251217071212_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -33,9 +33,8 @@ namespace SpaFinalProject.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Appointment_Id"));
 
-                    b.Property<string>("Customer_Id")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("Customer_Id")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
@@ -74,8 +73,11 @@ namespace SpaFinalProject.Migrations
 
             modelBuilder.Entity("SpaFinalProject.Components.Models.Customer", b =>
                 {
-                    b.Property<string>("Customer_Id")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("Customer_Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Customer_Id"));
 
                     b.Property<DateTime>("DateAccount")
                         .HasColumnType("datetime2");

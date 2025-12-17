@@ -74,7 +74,7 @@ else
 
 @code {
     [SupplyParameterFromQuery]
-    private string Customer_Id { get; set; }
+    private int Customer_Id { get; set; }
 
     [SupplyParameterFromForm]
     private Customer? Customer { get; set; }
@@ -116,7 +116,7 @@ else
         NavigationManager.NavigateTo("/customers");
     }
 
-    private bool CustomerExists(string customer_id)
+    private bool CustomerExists(int customer_id)
     {
         using var context = DbFactory.CreateDbContext();
         return context.Customer.Any(e => e.Customer_Id == customer_id);

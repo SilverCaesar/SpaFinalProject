@@ -10,7 +10,7 @@ namespace SpaFinalProject.Components.Models
         public int Appointment_Id { get; set; }
 
     
-        public string Customer_Id { get; set; } = string.Empty;
+        public int Customer_Id { get; set; }
 
         public Customer ?Customer { get; set; }
 
