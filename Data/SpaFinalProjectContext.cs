@@ -17,5 +17,6 @@ namespace SpaFinalProject.Data
         public DbSet<SpaFinalProject.Components.Models.Customer> Customer { get; set; } = default!;
         public DbSet<SpaFinalProject.Components.Models.Service> Service { get; set; } = default!;
         public DbSet<SpaFinalProject.Components.Models.Employee> Employee { get; set; } = default!;
+        public DbSet<SpaFinalProject.Components.Models.Appointment> Appointment { get; set; } = default!;
     }
 }
