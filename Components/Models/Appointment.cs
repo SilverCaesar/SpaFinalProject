@@ -1,7 +1,10 @@
-﻿namespace SpaFinalProject.Components.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace SpaFinalProject.Components.Models
 {
     public class Appointment
     {
+        [Key]
         private int appointment_id;
         //fk customer_id
         private int customer_id;

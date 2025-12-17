@@ -1,0 +1,84 @@
+﻿@page "/employees/create"
+@using Microsoft.EntityFrameworkCore
+@using SpaFinalProject.Components.Models
+@inject IDbContextFactory<SpaFinalProject.Data.SpaFinalProjectContext> DbFactory
+@inject NavigationManager NavigationManager
+
+<PageTitle>Create</PageTitle>
+
+<h1>Create</h1>
+
+<h2>Employee</h2>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <EditForm method="post" Model="Employee" OnValidSubmit="AddEmployee" FormName="create" Enhance>
+            <DataAnnotationsValidator />
+            <ValidationSummary class="text-danger" role="alert"/>
+            <div class="mb-3">
+                <label for="fname" class="form-label">FName:</label> 
+                <InputText id="fname" @bind-Value="Employee.FName" class="form-control" /> 
+                <ValidationMessage For="() => Employee.FName" class="text-danger" /> 
+            </div>        
+            <div class="mb-3">
+                <label for="lname" class="form-label">LName:</label> 
+                <InputText id="lname" @bind-Value="Employee.LName" class="form-control" /> 
+                <ValidationMessage For="() => Employee.LName" class="text-danger" /> 
+            </div>        
+            <div class="mb-3">
+                <label for="employeetype" class="form-label">EmployeeType:</label> 
+                <InputText id="employeetype" @bind-Value="Employee.EmployeeType" class="form-control" /> 
+                <ValidationMessage For="() => Employee.EmployeeType" class="text-danger" /> 
+            </div>        
+            <div class="mb-3">
+                <label for="email" class="form-label">email:</label> 
+                <InputText id="email" @bind-Value="Employee.email" class="form-control" /> 
+                <ValidationMessage For="() => Employee.email" class="text-danger" /> 
+            </div>        
+            <div class="mb-3">
+                <label for="user_id" class="form-label">User_Id:</label> 
+                <InputNumber id="user_id" @bind-Value="Employee.User_Id" class="form-control" /> 
+                <ValidationMessage For="() => Employee.User_Id" class="text-danger" /> 
+            </div>        
+            <div class="mb-3">
+                <label for="email" class="form-label">Email:</label> 
+                <InputText id="email" @bind-Value="Employee.Email" class="form-control" /> 
+                <ValidationMessage For="() => Employee.Email" class="text-danger" /> 
+            </div>        
+            <div class="mb-3">
+                <label for="password" class="form-label">Password:</label> 
+                <InputText id="password" @bind-Value="Employee.Password" class="form-control" /> 
+                <ValidationMessage For="() => Employee.Password" class="text-danger" /> 
+            </div>        
+            <div class="mb-3">
+                <label for="phone" class="form-label">Phone:</label> 
+                <InputText id="phone" @bind-Value="Employee.Phone" class="form-control" /> 
+                <ValidationMessage For="() => Employee.Phone" class="text-danger" /> 
+            </div>        
+            <button type="submit" class="btn btn-primary">Create</button>
+        </EditForm>
+    </div>
+</div>
+
+<div>
+    <a href="/employees">Back to List</a>
+</div>
+
+@code {
+    [SupplyParameterFromForm]
+    private Employee Employee { get; set; } = new()
+    {
+      FName = string.Empty,
+      LName = string.Empty
+    
+    };
+
+    // To protect from overposting attacks, see https://learn.microsoft.com/aspnet/core/blazor/forms/#mitigate-overposting-attacks.
+    private async Task AddEmployee()
+    {
+        using var context = DbFactory.CreateDbContext();
+        context.Employee.Add(Employee);
+        await context.SaveChangesAsync();
+        NavigationManager.NavigateTo("/employees");
+    }
+}
