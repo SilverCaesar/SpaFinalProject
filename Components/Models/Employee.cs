@@ -7,8 +7,8 @@ namespace SpaFinalProject.Components.Models
     {
         [Key]
         public int EmployeeId { get; set; }
-        public required string FName { get; set; }
-        public required string LName { get; set; }
+        public string FName { get; set; }
+        public string LName { get; set; }
         public string ?EmployeeType { get; set; }
         public Service ?Specialization { get; set; }
     }
